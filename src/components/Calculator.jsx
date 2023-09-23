@@ -9,7 +9,12 @@ const Calculator = () => {
   const buttonPress = (label) => {
     if (label === '=') {
       try {
-        setResult(eval(input).toString());
+        const tempResult = eval(input)
+        if (!(tempResult % 1)) {
+          setResult(eval(input));
+        } else {
+          setResult(eval(input).toFixed(5));
+        }
       } catch (error) {
         setResult('Error')
       }
